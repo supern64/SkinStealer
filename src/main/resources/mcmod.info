@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skinstealer",
+  "name": "Skin Stealer",
+  "description": "Mod to grab skins URLs from players/NPCs.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SuperN64"],
+  "credits": "sex",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
