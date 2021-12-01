@@ -8,4 +8,4 @@ A Minecraft mod for 1.8.9 to grab player/NPC skins.
 4. Get skin URL
 
 ### How to compile
-Clone and use ./gradlew build
+Clone and use ./gradlew build, use Java 8
