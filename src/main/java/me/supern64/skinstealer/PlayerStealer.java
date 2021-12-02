@@ -37,7 +37,7 @@ public class PlayerStealer {
                 
                 // held skull
                 ItemStack heldItem = target.getHeldItem();
-                if (heldItem.getItem() instanceof ItemSkull) {
+                if (heldItem != null && (heldItem.getItem() instanceof ItemSkull)) {
                     lastHeldSkullURL = SkinStealer.getSkullURL(heldItem);
                     if (lastHeldSkullURL != null) {
                         hasHeldSkull = true;
@@ -46,7 +46,7 @@ public class PlayerStealer {
 
                 // head skull
                 ItemStack headItem = target.getEquipmentInSlot(4);
-                if (headItem.getItem() instanceof ItemSkull) {
+                if (headItem != null && (headItem.getItem() instanceof ItemSkull)) {
                     lastHeadSkullURL = SkinStealer.getSkullURL(headItem);
                     if (lastHeadSkullURL != null) {
                         hasHeadSkull = true;

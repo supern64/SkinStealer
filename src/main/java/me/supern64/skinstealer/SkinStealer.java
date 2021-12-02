@@ -4,6 +4,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,7 +18,7 @@ import java.util.Base64;
 public class SkinStealer
 {
     public static final String MODID = "skinstealer";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1.0";
 
     public static final String prefix = EnumChatFormatting.BLUE + "[SkinStealer] ";
     public static final String baseTextureURL = "https://textures.minecraft.net/texture/";
@@ -41,10 +42,11 @@ public class SkinStealer
                 return "name:" + ((NBTTagString)skullTags).getString();
             } else if (skullTags instanceof NBTTagCompound) { // custom
                 NBTTagCompound skullTagsCompound = (NBTTagCompound) skullTags;
-                String textureString = skullTagsCompound.getCompoundTag("Properties").getCompoundTag("textures").getString("Value");
+                System.out.println(skullTags.toString());
+                String textureString = skullTagsCompound.getCompoundTag("Properties").getTagList("textures", Constants.NBT.TAG_COMPOUND).getCompoundTagAt(0).getString("Value");
                 String decoded = new String(Base64.getDecoder().decode(textureString));
                 JsonObject json = new JsonParser().parse(decoded).getAsJsonObject();
-                return json.getAsJsonObject("textures").getAsJsonObject("SKIN").getAsJsonObject("url").getAsString();
+                return json.getAsJsonObject("textures").getAsJsonObject("SKIN").getAsJsonPrimitive("url").getAsString();
             } else { return null; }
         }
         return null;

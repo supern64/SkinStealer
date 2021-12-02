@@ -42,7 +42,10 @@ public class Commands extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        if (args.length < 1) sendHelp(sender);
+        if (args.length < 1) {
+            sendHelp(sender);
+            return;
+        }
         if (args[0].equals("toggle")) {
             toggleCommand(sender);
         } else if (args[0].equals("copy") && args.length == 2){
@@ -73,6 +76,10 @@ public class Commands extends CommandBase {
                 break;
             case "heldskull":
                 if (PlayerStealer.lastHeldSkullURL != null) {
+                    if (PlayerStealer.lastHeldSkullURL.startsWith("name:")) {
+                        sender.addChatMessage(new ChatComponentText(SkinStealer.prefix + EnumChatFormatting.GREEN + "The held skull uses " + PlayerStealer.lastHeldSkullURL.substring(5) + "'s skin."));
+                        return;
+                    }
                     selection = new StringSelection(PlayerStealer.lastHeldSkullURL);
                     clipboard.setContents(selection, selection);
                 } else {
@@ -82,6 +89,10 @@ public class Commands extends CommandBase {
                 break;
             case "headskull":
                 if (PlayerStealer.lastHeadSkullURL != null) {
+                    if (PlayerStealer.lastHeadSkullURL.startsWith("name:")) {
+                        sender.addChatMessage(new ChatComponentText(SkinStealer.prefix + EnumChatFormatting.GREEN + "The head skull uses " + PlayerStealer.lastHeadSkullURL.substring(5) + "'s skin."));
+                        return;
+                    }
                     selection = new StringSelection(PlayerStealer.lastHeadSkullURL);
                     clipboard.setContents(selection, selection);
                 } else {
