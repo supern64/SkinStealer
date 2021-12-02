@@ -31,7 +31,6 @@ public class SkinStealer
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new PlayerStealer());
         ClientCommandHandler.instance.registerCommand(new Commands());
-
     }
 
     public static String getSkullURL(ItemStack skull) {
@@ -42,7 +41,6 @@ public class SkinStealer
                 return "name:" + ((NBTTagString)skullTags).getString();
             } else if (skullTags instanceof NBTTagCompound) { // custom
                 NBTTagCompound skullTagsCompound = (NBTTagCompound) skullTags;
-                System.out.println(skullTags.toString());
                 String textureString = skullTagsCompound.getCompoundTag("Properties").getTagList("textures", Constants.NBT.TAG_COMPOUND).getCompoundTagAt(0).getString("Value");
                 String decoded = new String(Base64.getDecoder().decode(textureString));
                 JsonObject json = new JsonParser().parse(decoded).getAsJsonObject();

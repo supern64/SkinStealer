@@ -17,7 +17,7 @@ public class PlayerStealer {
     public static String lastHeadSkullURL = null;
 
     @SubscribeEvent
-    public void onEntityHit(AttackEntityEvent event) {
+    public void onEntityInteract(AttackEntityEvent event) {
         if (event.target instanceof EntityOtherPlayerMP) {
             EntityOtherPlayerMP target = (EntityOtherPlayerMP) event.target;
             if (SkinStealer.isToggled && event.entityPlayer.getName().equals(Minecraft.getMinecraft().thePlayer.getName())) {
@@ -57,6 +57,7 @@ public class PlayerStealer {
                     event.entityPlayer.addChatMessage(new ChatComponentText(SkinStealer.prefix + EnumChatFormatting.RED + "No custom skin is loaded. Wait if they have one."));
                     return;
                 } else {
+                    event.setCanceled(true);
                     // skin message
                     IChatComponent message = new ChatComponentText(SkinStealer.prefix + EnumChatFormatting.GREEN + "Click to copy URL!");
 
