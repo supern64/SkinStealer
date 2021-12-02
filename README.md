@@ -1,5 +1,5 @@
 # SkinStealer
-A Minecraft mod for 1.8.9 to grab player/NPC skins.
+A Minecraft mod for version 1.8.9 to grab player/NPC skins.
 
 ### How to use
 1. Install the mod
